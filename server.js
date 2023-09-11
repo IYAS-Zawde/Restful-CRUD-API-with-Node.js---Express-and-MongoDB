@@ -2,17 +2,24 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Product = require('./models/productModel')
 
+//App Configrations 
 const app = express()
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
-//routes
+
+
+//Routes
+
+//Get requests
+//Home Route
 app.get('/', (req, res)=>{
     res.send('Hello Node API')
 })
+//Blog Route
 app.get('/blog', (req, res)=>{
-    res.send('Hello Blog, This is after adding Nodemon')
+    res.send('Hello Blog, This is Node API')
 })
-
+//Products Route: List of all products from DB
 app.get('/products', async (req, res)=>{
     try {
         const products = await Product.find({});
@@ -22,7 +29,7 @@ app.get('/products', async (req, res)=>{
         res.status(500).json({message: error.message});
     }
 });
-
+//Product By ID Route: get product from DB using its ID
 app.get('/products/:id', async (req, res)=>{
     try {
         const {id} = req.params;
@@ -34,6 +41,8 @@ app.get('/products/:id', async (req, res)=>{
     }
 });
 
+//Post Requests
+//Product Route: Adding new product to DB, the JSON Object added to request body (using Postman Application)
 app.post('/product', async (req, res)=>{
     try {
         const product = await Product.create(req.body);
@@ -44,6 +53,8 @@ app.post('/product', async (req, res)=>{
     }
 });
 
+//Put Requests
+//Products Route: Update product in DB using its ID, the JSON Object, or URL Encoded Information added to request body (using Postman Application)
 app.put('/products/:id', async (req, res)=>{
     try {
         const {id} = req.params;
@@ -59,6 +70,8 @@ app.put('/products/:id', async (req, res)=>{
     }
 });
 
+//Delete Requests
+//Product Route: Delete product from DB using its ID
 app.delete('/products/:id', async (req, res)=>{
     try {
         const {id} = req.params;
@@ -73,10 +86,13 @@ app.delete('/products/:id', async (req, res)=>{
     }
 });
 
+
+//Database Configrations: Note the password has been changed for secutiy perposes.
 mongoose.
 connect('mongodb+srv://admin:RBC4jCrtzhRjaXim@db-restfullapinodejs.fcofqdz.mongodb.net/Node-API?retryWrites=true&w=majority')
 .then(()=>{
     console.log('connected to MangoDB');
+    //Run the express server after you connected successfully to DB
     app.listen(3000, ()=>{
         console.log('Node API app is running on port 3000')
     });
