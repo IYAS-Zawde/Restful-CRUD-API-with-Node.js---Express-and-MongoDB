@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "7f487616-998c-42e2-865e-79e04cceadc4",
+		"name": "RESTfull API Using NodeJS, Express, MangoDB",
+		"description": "This is a basic project in which I intend to create an application for CRUD operations on MangoDB using NodeJS and Express Server, as well as RESTful APIs for all operations and HTTP requests. Those are the requests I've made with the Postman application.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29660002"
+	},
+	"item": [
+		{
+			"name": "Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				},
+				"description": "Root URL"
+			},
+			"response": []
+		},
+		{
+			"name": "Blog URL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/blog",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"blog"
+					]
+				},
+				"description": "Another Get URL for testing"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					]
+				},
+				"description": "Getting list of all Products"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products/64ff3da8da836423b965c96e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"64ff3da8da836423b965c96e"
+					]
+				},
+				"description": "Get Product with using it's ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a product Using JSON",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Notebook: New\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/products/64ff43349e7372e677942b7d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"64ff43349e7372e677942b7d"
+					]
+				},
+				"description": "Using the ID and JSON format in Request body to update a product"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a product using URL",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "price",
+							"value": "25",
+							"description": "Updating Price Using URL",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/products/64ff43349e7372e677942b7d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"64ff43349e7372e677942b7d"
+					]
+				},
+				"description": "Using the ID and URL Encoding to update a product"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Notebook v2\",\r\n    \"quantity\": 5,\r\n    \"price\": 16,\r\n    \"Image\": \"https://th.bing.com/th/id/OIP.GMveVtiO9cDOI8VHVXVKHQHaHa?pid=ImgDet&rs=1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product"
+					]
+				},
+				"description": "Adding Product with JSON format"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products/64ff3bc5da836423b965c96c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"64ff3bc5da836423b965c96c"
+					]
+				},
+				"description": "Using ID to delete a product form database"
+			},
+			"response": []
+		}
+	]
+}
